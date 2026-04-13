@@ -13,7 +13,7 @@ class TechnicienType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prénom')
+            ->add('prenom')
             ->add('email')
             ->add('matricule')
         ;

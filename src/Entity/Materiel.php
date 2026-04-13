@@ -21,7 +21,7 @@ class Materiel
     private ?string $type = null;
 
     #[ORM\Column]
-    private ?int $quantité_utilisé = null;
+    private ?int $quantite_utilise = null;
 
     public function getId(): ?int
     {
@@ -52,14 +52,14 @@ class Materiel
         return $this;
     }
 
-    public function getQuantitéUtilisé(): ?int
+    public function getQuantiteUtilise(): ?int
     {
-        return $this->quantité_utilisé;
+        return $this->quantite_utilise;
     }
 
-    public function setQuantitéUtilisé(int $quantité_utilisé): static
+    public function setQuantiteUtilise(int $quantite_utilise): static
     {
-        $this->quantité_utilisé = $quantité_utilisé;
+        $this->quantite_utilise = $quantite_utilise;
 
         return $this;
     }

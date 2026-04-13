@@ -13,8 +13,8 @@ class StockType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('quantité')
-            ->add('référence')
+            ->add('quantite')
+            ->add('reference')
             ->add('prix_unitaire')
         ;
     }

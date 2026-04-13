@@ -22,13 +22,13 @@ class Commande
     private ?\DateTime $date_commande = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $n°commande = null;
+    private ?string $numero_commande = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $prix = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $détail = null;
+    private ?string $detail = null;
 
     public function getId(): ?int
     {
@@ -59,14 +59,14 @@ class Commande
         return $this;
     }
 
-    public function getN°commande(): ?string
+    public function getNumeroCommande(): ?string
     {
-        return $this->n°commande;
+        return $this->numero_commande;
     }
 
-    public function setN°commande(string $n°commande): static
+    public function setNumeroCommande(string $numero_commande): static
     {
-        $this->n°commande = $n°commande;
+        $this->numero_commande = $numero_commande;
 
         return $this;
     }
@@ -83,14 +83,14 @@ class Commande
         return $this;
     }
 
-    public function getDétail(): ?string
+    public function getDetail(): ?string
     {
-        return $this->détail;
+        return $this->detail;
     }
 
-    public function setDétail(string $détail): static
+    public function setDetail(string $detail): static
     {
-        $this->détail = $détail;
+        $this->detail = $detail;
 
         return $this;
     }

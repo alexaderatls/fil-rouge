@@ -19,10 +19,10 @@ class Client
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $prénom = null;
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $téléphone = null;
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
@@ -58,26 +58,26 @@ class Client
         return $this;
     }
 
-    public function getPrénom(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->prénom;
+        return $this->prenom;
     }
 
-    public function setPrénom(string $prénom): static
+    public function setPrenom(string $prenom): static
     {
-        $this->prénom = $prénom;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
-    public function getTéléphone(): ?string
+    public function getTelephone(): ?string
     {
-        return $this->téléphone;
+        return $this->telephone;
     }
 
-    public function setTéléphone(string $téléphone): static
+    public function setTelephone(string $telephone): static
     {
-        $this->téléphone = $téléphone;
+        $this->telephone = $telephone;
 
         return $this;
     }

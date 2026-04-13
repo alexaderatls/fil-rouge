@@ -15,7 +15,7 @@ class MaterielType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('quantité_utilisé')
+            ->add('quantite_utilise')
             ->add('intervention', EntityType::class, [
                 'class' => Intervention::class,
                 'choice_label' => 'id',

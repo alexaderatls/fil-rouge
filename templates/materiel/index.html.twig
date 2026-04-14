@@ -10,8 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Type</th>
-                <th>Quantité_utilisé</th>
-                <th>actions</th>
+                <th>Quantité utilisé</th>
+                <th>Intervention</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
                 <td>{{ materiel.id }}</td>
                 <td>{{ materiel.type }}</td>
                 <td>{{ materiel.quantiteUtilise }}</td>
+                <td>{{ materiel.intervention.id }}</td>
                 <td>
                     <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
                     <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">edit</a>

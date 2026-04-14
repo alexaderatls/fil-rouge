@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Stock;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,9 @@ class StockType extends AbstractType
             ->add('type')
             ->add('quantite')
             ->add('reference')
-            ->add('prix_unitaire')
+            ->add('prix_unitaire', TextType::class, [
+                'label' => 'Prix unitaire'
+            ])
         ;
     }
 

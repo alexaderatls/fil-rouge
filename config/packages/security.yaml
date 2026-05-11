@@ -41,9 +41,19 @@ security:
         ROLE_SUPERADMIN: ROLE_ADMIN
 
     access_control:
-        # Bloquer l'accès admin pour USER et EMPLOYER
-        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_SUPERADMIN] }
-        - { path: ^/employer, roles: [ROLE_EMPLOYER, ROLE_SUPERADMIN] }
+    # Pages accessibles uniquement si connecté
+    - { path: ^/intervention, roles: ROLE_USER }
+    - { path: ^/client, roles: ROLE_USER }
+    - { path: ^/stock, roles: ROLE_USER }
+    - { path: ^/materiel, roles: ROLE_USER }
+    - { path: ^/technicien, roles: ROLE_USER }
+
+    # Admin
+    - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_SUPERADMIN] }
+
+    # Employer
+    - { path: ^/employer, roles: [ROLE_EMPLOYER, ROLE_SUPERADMIN] }
+
 when@test:
     security:
         password_hashers:
@@ -56,4 +66,3 @@ when@test:
                 memory_cost: 10 # Lowest possible value for argon
 
 
-    

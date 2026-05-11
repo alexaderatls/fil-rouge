@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Technicien index{% endblock %}
+{% block title %}Index des Techniciens{% endblock %}
 
 {% block body %}
-    <h1>Technicien index</h1>
+    <h1>Index des Techniciens</h1>
 
     <table class="table">
         <thead>
@@ -25,8 +25,17 @@
                 <td>{{ technicien.email }}</td>
                 <td>{{ technicien.matricule }}</td>
                 <td>
-                    <a href="{{ path('app_technicien_show', {'id': technicien.id}) }}">show</a>
-                    <a href="{{ path('app_technicien_edit', {'id': technicien.id}) }}">edit</a>
+                        <a class="btn btn-sm btn-outline-info"
+       href="{{ path('app_technicien_show', {'id': technicien.id}) }}">
+        <i class="bi bi-eye"></i>
+    </a>
+
+    <a class="btn btn-sm btn-outline-warning"
+       href="{{ path('app_technicien_edit', {'id': technicien.id}) }}">
+        <i class="bi bi-pencil"></i>
+    </a>
+
+</div>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +46,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_technicien_new') }}">Create new</a>
+    <a class="btn btn-primary mb-3" href="{{ path('app_technicien_new') }}">
+    <i class="bi bi-plus-circle"></i> Ajouter un nouveau technicien
+</a>
 {% endblock %}

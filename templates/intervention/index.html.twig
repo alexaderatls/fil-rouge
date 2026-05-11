@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Intervention index{% endblock %}
+{% block title %}Index des Interventions{% endblock %}
 
 {% block body %}
-    <h1>Intervention index</h1>
+    <h1>Index des Interventions</h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,17 @@
                 <td>{{ intervention.statut }}</td>
                 <td>{{ intervention.dateintervention ? intervention.dateintervention|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}">show</a>
-                    <a href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">edit</a>
+                        <a class="btn btn-sm btn-outline-info"
+       href="{{ path('app_intervention_show', {'id': intervention.id}) }}">
+        <i class="bi bi-eye"></i>
+    </a>
+
+    <a class="btn btn-sm btn-outline-warning"
+       href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">
+        <i class="bi bi-pencil"></i>
+    </a>
+
+</div>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +44,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_intervention_new') }}">Create new</a>
+    <a class="btn btn-primary mb-3" href="{{ path('app_intervention_new') }}">
+    <i class="bi bi-plus-circle"></i> Créer une nouvelle intervention
+</a>
 {% endblock %}

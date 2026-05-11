@@ -1,34 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Materiel{% endblock %}
+{% block title %}Matériel{% endblock %}
 
 {% block body %}
-    <h1>Materiel</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ materiel.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ materiel.type }}</td>
-            </tr>
-            <tr>
-                <th>Quantité utilisé</th>
-                <td>{{ materiel.quantiteUtilise }}</td>
-            </tr>
-            <tr>
-                <th>Intervention</th>
-                <td>{{ materiel.intervention }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Matériel</h1>
 
-    <a href="{{ path('app_materiel_index') }}">back to list</a>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ materiel.id }}</td>
+        </tr>
 
-    <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">edit</a>
+        <tr>
+            <th>Type</th>
+            <td>{{ materiel.type }}</td>
+        </tr>
 
-    {{ include('materiel/_delete_form.html.twig') }}
+        <tr>
+            <th>Quantité utilisée</th>
+            <td>{{ materiel.quantiteUtilise }}</td>
+        </tr>
+
+        <tr>
+            <th>Intervention</th>
+            <td>
+                {% if materiel.intervention %}
+                    {{ materiel.intervention.id }}
+                {% else %}
+                    <span class="text-muted">Aucune intervention</span>
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">
+    <i class="bi bi-pencil"></i> Modifier
+</a>
+
+{{ include('materiel/_delete_form.html.twig') }}
+
+<a class="btn btn-secondary mb-3" href="{{ path('app_materiel_index') }}">
+    <i class="bi bi-arrow-left"></i> Retour à la liste
+</a>
+
 {% endblock %}

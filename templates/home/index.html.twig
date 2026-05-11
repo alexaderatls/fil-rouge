@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - WattUp{% endblock %}
+
+{% block body %}
+
+<div class="hero-container">
+
+    <div class="hero-content">
+
+        <h1 class="hero-title">
+            ⚡
+        </h1>
+        <h1 class="hero-title">
+            WattUp
+        </h1>
+
+        <p class="hero-subtitle">
+            Bienvenue chez nous
+        </p>
+
+        <p class="hero-text">
+            Une gestion moderne des interventions, du matériel,
+            des techniciens et de vos clients.
+        </p>
+
+        {% if app.user %}
+            <a class="btn btn-primary btn-lg mt-3"
+               href="{{ path('app_intervention_index') }}">
+
+                <i class="bi bi-speedometer2"></i>
+                Accéder au dashboard
+
+            </a>
+        {% else %}
+            <a class="btn btn-primary btn-lg mt-3"
+               href="{{ path('app_login') }}">
+
+                <i class="bi bi-box-arrow-in-right"></i>
+                Se connecter
+
+            </a>
+                <p class="register-text mt-3">
+        Pas encore de compte chez nous ?
+        <a href="{{ path('app_register') }}" class="register-link">
+            S'inscrire
+        </a>
+    </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<style>
+
+.hero-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 6rem;
+    font-weight: 800;
+    color: #5ea8ff;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    color: #f3f4f6;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    color: #b0b3b8;
+    line-height: 1.8;
+}
+
+</style>
+
+{% endblock %}

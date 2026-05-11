@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Materiel index{% endblock %}
+{% block title %}Index des Matériaux{% endblock %}
 
 {% block body %}
-    <h1>Materiel index</h1>
+    <h1>Index des Matériaux</h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,17 @@
                 <td>{{ materiel.quantiteUtilise }}</td>
                 <td>{{ materiel.intervention.id }}</td>
                 <td>
-                    <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
-                    <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">edit</a>
+                        <a class="btn btn-sm btn-outline-info"
+       href="{{ path('app_materiel_show', {'id': materiel.id}) }}">
+        <i class="bi bi-eye"></i>
+    </a>
+
+    <a class="btn btn-sm btn-outline-warning"
+       href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">
+        <i class="bi bi-pencil"></i>
+    </a>
+
+</div>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +44,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_materiel_new') }}">Create new</a>
+    <a class="btn btn-primary mb-3" href="{{ path('app_materiel_new') }}">
+    <i class="bi bi-plus-circle"></i> Ajouter un nouveau matériel
+</a>
 {% endblock %}

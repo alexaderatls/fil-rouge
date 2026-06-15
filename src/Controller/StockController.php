@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 #[Route('/stock')]
 final class StockController extends AbstractController
@@ -30,8 +31,18 @@ final class StockController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($stock);
-            $entityManager->flush();
+            try {
+    $entityManager->persist($stock);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_stock_index');
+
+} catch (UniqueConstraintViolationException $e) {
+
+    $this->addFlash('danger', 'Ce type de matériel existe déjà dans le stock.');
+
+    return $this->redirectToRoute('app_stock_new');
+}
 
             return $this->redirectToRoute('app_stock_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -30,11 +30,28 @@ final class MaterielController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($materiel);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
-        }
+    $stock = $form->get('type')->getData();
+
+    // sécurité stock suffisant
+    if ($stock->getQuantite() < $materiel->getQuantiteUtilise()) {
+        $this->addFlash('danger', 'Stock insuffisant.');
+        return $this->redirectToRoute('app_materiel_new');
+    }
+
+    // on copie le type du stock dans Materiel
+    $materiel->setType($stock->getType());
+
+    // on décrémente le stock
+    $stock->setQuantite(
+        $stock->getQuantite() - $materiel->getQuantiteUtilise()
+    );
+
+    $entityManager->persist($materiel);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
+}
 
         return $this->render('materiel/new.html.twig', [
             'materiel' => $materiel,

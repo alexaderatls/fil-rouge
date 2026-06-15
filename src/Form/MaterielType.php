@@ -15,7 +15,12 @@ class MaterielType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type')
+            ->add('type', EntityType::class, [
+            'class' => \App\Entity\Stock::class,
+            'choice_label' => 'type',
+            'label' => 'Matériel (Stock)',
+            'mapped' => false
+        ])
             ->add('quantite_utilise', TextType::class, [
                 'label' => 'Quantité utilisée'
             ])

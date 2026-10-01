@@ -121,7 +121,7 @@ a:hover {
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-
+{% if app.user %}
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
@@ -169,7 +169,7 @@ a:hover {
                 {% endif %}
 
             </ul>
-
+{% endif %}
         </div>
     </div>
 </nav>

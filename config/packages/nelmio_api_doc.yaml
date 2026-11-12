@@ -1,0 +1,15 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: 'Mon Super Titre '
+            description: 'Documentation de notre API REST'
+            version: '1.0.0'
+
+    areas:
+        default:
+            path_patterns:
+            - '^/api(?!/doc(?:/|$|.))'
+            - ^/materiel
+            - ^/client
+            - ^/intervention
+

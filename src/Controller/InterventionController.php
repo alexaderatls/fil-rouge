@@ -17,6 +17,7 @@ final class InterventionController extends AbstractController
     #[Route(name: 'app_intervention_index', methods: ['GET'])]
     public function index(InterventionRepository $interventionRepository): Response
     {
+
         return $this->render('intervention/index.html.twig', [
             'interventions' => $interventionRepository->findAll(),
         ]);

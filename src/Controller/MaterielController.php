@@ -11,10 +11,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+use OpenApi\Attributes as OA;
+
+
 #[Route('/materiel')]
 final class MaterielController extends AbstractController
 {
     #[Route(name: 'app_materiel_index', methods: ['GET'])]
+
+    #[OA\Get(
+    path: '/materiel',
+    tags: ['Matériels'],
+    summary: 'Lister les matériels'
+    )]
     public function index(MaterielRepository $materielRepository): Response
     {
         return $this->render('materiel/index.html.twig', [
